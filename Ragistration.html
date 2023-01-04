@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="css/bootstrap.css"/>
+	<link rel="stylesheet"  href="css/all.css"/>
+	<script src="js/bootstrap.js"></script>
+	<title></title>
+	<style>
+		#h1
+		{
+			font-size: 35px;
+			text-align: center;
+			margin-top: 20px;
+			font-family: monospace;
+		}
+		.header
+		{
+			min-height: 300px;
+			margin:px auto; 
+			font-weight: bold;
+		}
+		body
+		{
+			background: whitesmoke;
+		}
+	</style>
+</head>
+<body>
+	<div id="h1">Ragister <span style="color: orange;border-bottom: 2px solid orange;"> With US</span></div>
+	<p style="text-align: center;">Safety starts with understanding how developers collect and share your data. Data privacy and <br/>security practices mt over time.</p>
+	<div class="row">
+	<div class="col-sm-3 offset-7 justify-content-right">
+		Search:
+				<div class="input-group mb-3">
+					<i class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></i>
+					<input type="text" id="search" class="form-control" onkeyup="searchdata(this)">
+				</div>
+	</div>
+	<div class="col-sm-2"></div>
+	</div>
+	<div class="container-fluid">
+		<div class="row header">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-5 p-3">
+		<form method="get" onsubmit="handleData()">
+				Enroll No:
+				<div class="input-group mb-3">
+					<i class="input-group-text"><i class="fa-solid fa-pencil"></i></i>
+					<input type="text" id="enroll"  value="1011" class="form-control" readonly name="enorll">
+					<input type="hidden" id="index"  value="1011" class="form-control" readonly name="enorll">
+				</div>
+				Name:
+				<div class="input-group mb-3">
+					<i class="input-group-text"><i class="fa-solid fa-user"></i></i>
+					<input type="text" id="name" placeholder="Username" class="form-control" name="name">
+				</div>
+			   College Name:
+				<div class="input-group mb-3">
+					<i class="input-group-text"><i class="fa-solid fa-graduation-cap"></i>
+				</i>
+					<input type="text" id="college" placeholder="" class="form-control" name="callege name">
+				</div>
+				Year:
+				<div class="input-group mb-3">
+					<i class="input-group-text"><i class="fa-regular fa-calendar-days"></i></i>
+					<input type="number" id="year" placeholder="Your passing year" class="form-control" name="year">
+				</div>
+				Email:
+				<div class="input-group mb-3">
+					<i class="input-group-text"><i class="fa-solid fa-envelope"></i></i>
+					<input type="email" placeholder="Email Id" id="email" class="form-control" name="email">
+				</div>
+
+				Password:
+				<div class="input-group mb-3">
+					<i class="input-group-text"><i class="fa-solid fa-key"></i></i>
+					<input type="Password" id="pass" placeholder="Enter Your Password" class="form-control" onkeyup="demo3()" name="password">
+				</div>
+				Profile:<div class="input-group mb-3">
+					<i class="input-group-text"><i class="fa-solid fa-key"></i></i>
+					<input type="file" id="file" class="form-control" name="pic" onchange="uploadpic(this)">
+				</div>
+				<button class="btn btn-warning" id="submit" onclick="register()">Ragister Now</button>
+				<button class="btn btn-warning" id="update" onclick="updatedata()" style="display: none">Update</button>
+			</div>
+
+			<div class="col-sm-5 p-3">
+				Today Is:
+				<div class="input-group mb-3">
+					<i class="input-group-text"><i class="fa-regular fa-calendar-days"></i></i>
+					<input id="today"  type="text"  class="form-control" disabled name="today">
+				</div>
+				Apply For:
+				<div class="input-group mb-3">
+					<i class="input-group-text"><i class="fa-solid fa-user"></i></i>
+						<select class="form-control w-75" id="degree">
+						<option>Select Your Course</option>
+						<option>B.Tech</option>
+						<option>M.Tech</option>
+						<option>Diploma</option>
+						<option>Diploma(C.S)</option>
+						<option>Diploma(I.T)</option>
+						<option>B.C.A</option>
+						<option>Diploma (E.C)</option>
+						<option>Other</option>
+					</select><span style="position: relative; right: 15px; top:5px; font-size: 20px; font-weight: bold;">&darr;</span>
+				</div>
+			   Course:
+				<div class="input-group mb-3">
+					<i class="input-group-text"><i class="fa-solid fa-graduation-cap"></i></i>
+					<select class="form-control" onchange="demo1(this)" id="course">
+						<option value="">Select Summer Name</option>
+						<option value="WT">Syllbus Traning(Without Traning)</option>
+						<option value="ST">Syllbus Traning(With Traning)</option>
+						<option value="VT">Vocational Traning</option>
+						<option value="sT">Summer Traning</option>
+						<option value="wT">Winter Traning</option>
+						<option value="App">Appenticeship Traning</option>
+						<option value="JS">Javascript and Jquery Traning</option>
+						<option value="O">Other</option><span style="position: relative; right: 15px; top:5px; font-size: 20px; font-weight: bold;">&darr;</span>
+					</select>
+				</div>
+				Contact No:
+				<div class="input-group mb-3">
+					<i class="input-group-text"><i class="fa-solid fa-phone"></i></i>
+					<input type="number" placeholder="Your Contact Number" class="form-control" pattern="{0-9}[10]" id="phone" name="number"><span id="s"></span>
+				</div>
+				Amount To pay:
+				<div class="input-group mb-3">
+					<i class="input-group-text"><i class="fa-brands fa-amazon-pay"></i></i>
+					<input type="text" id="pay" disabled class="form-control" name="pay">
+				</div>
+				Confarm Password:
+				<div class="input-group mb-3">
+					<i class="input-group-text"><i class="fa-solid fa-key"></i></i>
+					<input type="password" onkeyup="demo3()" id="cpass" placeholder="Confarm Password"  class="form-control" name="pay">
+				</div>
+				<button class="btn btn-warning" onclick="cleardata">Clear Data</button>
+			</div>
+
+			</form>
+			<div class="col-sm-1"></div>
+		</div>
+		<div class="row table">
+			<div class="col-sm-12">
+				<table class="table table-streacted">
+					<thead>
+						<tr class="text-bg-success">
+							<th>Sr.No</th>
+							<th>Enorll</th>
+							<th>Name</th>
+							<th>Email</th>
+							<th>College Name</th>
+							<th>Contact No</th>
+							<th>Course</th>
+							<th>Degree</th>
+							<th>Year</th>
+							<th>Date</th>
+							<th>Amount</th>
+							<th>Profile</th>
+							<th>Action</th>
+							
+						</tr>
+					</thead>
+					<tbody id="table_data">
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+	<script src="ragistration.js"></script>
+</body>
+</html>
